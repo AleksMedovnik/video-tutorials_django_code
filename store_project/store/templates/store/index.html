@@ -13,7 +13,11 @@
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
 
-    <title>Home</title>
+    <title>
+        {% block title %}
+            Home
+        {% endblock title %}
+    </title>
 </head>
 
 <body class="min-vh-100 d-flex flex-column justify-content-between">

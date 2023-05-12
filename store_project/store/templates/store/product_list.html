@@ -1,22 +1,29 @@
 {% extends 'store/index.html' %}
 
+{% block title %}
+Product list
+{% endblock title %}
+
 {% block content %}
+
 <div class="card-group">
+    {% for product in products %}
     <div class="card">
         <a href="./product_detail/product_detail.html">
-            <img src="https://www.hdcarwallpapers.com/walls/range_rover_hse_adv15r-HD.jpg"
-                class="card-img-top" alt="Range Rover">
+            <img src="https://www.hdcarwallpapers.com/walls/range_rover_hse_adv15r-HD.jpg" class="card-img-top"
+                alt="Range Rover">
         </a>
         <div class="card-body">
-            <h5 class="card-title">{{ product_title }}</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                additional
-                content. This content is a little bit longer.</p>
+            <h5 class="card-title">{{ product.title }}</h5>
+            <p class="card-text">{{ product.info }}</p>
+            <p class="card-text">Price: {{ product.price }}</p>
             <ul class="category_list">
                 <li><a href="">Sport</a></li>
                 <li><a href="">Crossower</a></li>
             </ul>
         </div>
     </div>
+    {% endfor %}
 </div>
+
 {% endblock content %}
