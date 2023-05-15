@@ -2,11 +2,7 @@ from django.shortcuts import render
 
 
 def build_template(lst: list, cols: int) -> list[list]:
-    return 
-
-
-# [[1, 2, 3], [4, 5, 6], [7, 8, 9,], [10]]
-print(build_template([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3))
+    return [lst[i:i + cols] for i in range(0, len(lst), cols)]
 
 
 def product_list(request):
@@ -24,5 +20,5 @@ def product_list(request):
     return render(
         request,
         'store/product_list.html',
-        context={'products': products}
+        context={'product_list': build_template(products, 3)}
     )
