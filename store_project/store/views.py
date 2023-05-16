@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Product
 
 
 def build_template(lst: list, cols: int) -> list[list]:
@@ -6,17 +7,7 @@ def build_template(lst: list, cols: int) -> list[list]:
 
 
 def product_list(request):
-    products = [
-        {'title': 'Range Rover', 'info': 'Lorem ipsum...', 'price': 150000},
-        {'title': 'Land Rover Defender', 'info': 'Lorem ipsum...', 'price': 100000},
-        {'title': 'Range Rover Sport', 'info': 'Lorem ipsum...', 'price': 250000},
-        {'title': 'Range Rover', 'info': 'Lorem ipsum...', 'price': 150000},
-        {'title': 'Land Rover Defender', 'info': 'Lorem ipsum...', 'price': 100000},
-        {'title': 'Range Rover Sport', 'info': 'Lorem ipsum...', 'price': 250000},
-        {'title': 'Range Rover', 'info': 'Lorem ipsum...', 'price': 150000},
-        {'title': 'Land Rover Defender', 'info': 'Lorem ipsum...', 'price': 100000},
-        {'title': 'Range Rover Sport', 'info': 'Lorem ipsum...', 'price': 250000},
-    ]
+    products = Product.objects.all()
     return render(
         request,
         'store/product_list.html',
