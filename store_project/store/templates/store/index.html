@@ -43,15 +43,12 @@
                                 Categories
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Sport Car</a></li>
+                                {% for category in categories %}
+                                <li><a class="dropdown-item" href="#">{{ category.title }}</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#">Crossower</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Minivan</a></li>
+                                {% endfor %}
                             </ul>
                         </li>
                     </ul>
