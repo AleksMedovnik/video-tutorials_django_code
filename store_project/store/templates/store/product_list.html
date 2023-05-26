@@ -9,7 +9,7 @@ Product list
 <div class="card-group">
     {% for product in products %}
     <div class="card">
-        <a href="./product_detail/product_detail.html">
+        <a href="{% url 'product_detail_url' pk=product.pk %}">
             <img src="https://www.hdcarwallpapers.com/walls/range_rover_hse_adv15r-HD.jpg" class="card-img-top"
                 alt="Range Rover">
         </a>
