@@ -27,3 +27,6 @@ def product_detail(request, pk):
         'store/product_detail.html',
         context={'product': product, 'categories': categories}
     )
+
+
+# product.categories.all()
