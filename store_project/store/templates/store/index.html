@@ -44,7 +44,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 {% for category in categories %}
-                                <li><a class="dropdown-item" href="#">{{ category.title }}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'category_detail_url' pk=category.pk %}">{{ category.title }}</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>

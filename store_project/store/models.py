@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import reverse
 
 
 class Product(models.Model):
@@ -9,6 +10,9 @@ class Product(models.Model):
 
     def __str__(self) -> str:
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('product_detail_url', kwargs={'pk': self.pk})
 
 
 class Category(models.Model):
