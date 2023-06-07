@@ -7,6 +7,7 @@ class Product(models.Model):
     info = models.TextField(blank=True)
     price = models.IntegerField()
     categories = models.ManyToManyField('Category', blank=True, related_name='products')
+    image = models.ImageField(upload_to='images/', default='images/default.jpg')
 
     def __str__(self) -> str:
         return self.title
@@ -20,3 +21,6 @@ class Category(models.Model):
 
     def __str__(self) -> str:
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('category_detail_url', kwargs={'pk': self.pk})
