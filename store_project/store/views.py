@@ -1,31 +1,36 @@
 from django.shortcuts import render
 from .models import *
 from django.db.models import Q
+from django.views.generic import ListView, DetailView
 
 
-def build_template(lst: list, cols: int) -> list[list]:
-    return [lst[i:i + cols] for i in range(0, len(lst), cols)]
+class HomeView(ListView):
+    model = Product
 
 
 def product_list(request):
     categories = Category.objects.all()
     search_query = request.GET.get('search', None)
     if search_query:
-        products = Product.objects.filter(
+        product_list = Product.objects.filter(
             Q(title__icontains=search_query)
             |
             Q(info__icontains=search_query)
         )
     else:
-        products = Product.objects.all()
+        product_list = Product.objects.all()
     return render(
         request,
         'store/product_list.html',
         context={
-            'product_list': build_template(products, 3),
+            'product_list': product_list,
             'categories': categories
         }
     )
+
+
+class ProductView(DetailView):
+    model = Product
 
 
 def product_detail(request, pk):
@@ -41,12 +46,12 @@ def product_detail(request, pk):
 def category_detail(request, pk):
     categories = Category.objects.all()
     category = Category.objects.get(pk=pk)
-    products = category.products.all()
+    product_list = category.products.all()
     return render(
         request,
         'store/category_detail.html',
         context={
-            'product_list': build_template(products, 3),
+            'product_list': product_list,
             'category': category,
             'categories': categories
         }
@@ -64,6 +69,7 @@ def save_order(request):
         request,
         'store/order.html',
         context={
-            'categories': categories
+            'categories': categories,
+            'order': order
         }
     )
