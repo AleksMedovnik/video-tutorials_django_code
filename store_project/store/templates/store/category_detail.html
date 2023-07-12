@@ -10,7 +10,7 @@
 {% else %}
 <h1>Товары категории "{{ category.title }}":</h1>
 <div class="column-x">
-    {% for product in product_list %}
+    {% for product in category.products.all %}
         {% include 'store/includes/card_group.html' %}
     {% endfor %}
 </div>
