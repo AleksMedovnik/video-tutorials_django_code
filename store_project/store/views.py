@@ -2,9 +2,10 @@ from django.shortcuts import render
 from .models import *
 from django.db.models import Q
 from django.views.generic import ListView, DetailView
+from .utils import CategoriesMixin
 
 
-class HomeView(ListView):
+class HomeView(ListView, CategoriesMixin):
     model = Product
 
     def get_queryset(self):
@@ -17,17 +18,12 @@ class HomeView(ListView):
             )
         return Product.objects.all()
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['categories'] = Category.objects.all()
-        return context
 
-
-class ProductView(DetailView):
+class ProductView(DetailView, CategoriesMixin):
     model = Product
 
 
-class CategoryView(DetailView):
+class CategoryView(DetailView, CategoriesMixin):
     model = Category
 
 
