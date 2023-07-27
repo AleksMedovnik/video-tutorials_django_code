@@ -16,7 +16,7 @@ class Product(models.Model):
         return reverse('product_detail_url', kwargs={'pk': self.pk})
 
     class Meta:
-        ordering = ['-pk']
+        ordering = ['-price']
 
 
 class Category(models.Model):
