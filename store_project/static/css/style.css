@@ -1,4 +1,4 @@
-.logo{
+.logo {
     width: 50px;
     border-radius: 100%;
 }
@@ -21,4 +21,16 @@
 
 .column-x {
     column-count: 3;
+}
+
+@media (max-width: 768px) {
+    .column-x {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 540px) {
+    .column-x {
+        column-count: 1;
+    }
 }

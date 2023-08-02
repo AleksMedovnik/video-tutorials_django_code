@@ -5,10 +5,8 @@ Product list
 {% endblock title %}
 
 {% block content %}
-<div class="column-x">
     {% for product in product_list %}
-        {% include 'store/includes/card_group.html' %}
+        {% include 'store/includes/card.html' %}
     {% endfor %}
-</div>
 {% endblock content %}
 
